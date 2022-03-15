@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "ready-set-redirect": "apps/ready-set-redirect",
+    "ready-set-redirect-e2e": "apps/ready-set-redirect-e2e"
+  }
+}

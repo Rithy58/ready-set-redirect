@@ -1,0 +1,74 @@
+{
+  "root": "apps/ready-set-redirect",
+  "sourceRoot": "apps/ready-set-redirect/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/ready-set-redirect",
+        "index": "apps/ready-set-redirect/src/index.html",
+        "baseHref": "/",
+        "main": "apps/ready-set-redirect/src/main.tsx",
+        "polyfills": "apps/ready-set-redirect/src/polyfills.ts",
+        "tsConfig": "apps/ready-set-redirect/tsconfig.app.json",
+        "assets": [
+          "apps/ready-set-redirect/src/favicon.ico",
+          "apps/ready-set-redirect/src/assets"
+        ],
+        "styles": ["apps/ready-set-redirect/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ready-set-redirect/src/environments/environment.ts",
+              "with": "apps/ready-set-redirect/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "ready-set-redirect:build",
+        "hmr": true,
+        "proxyConfig": "apps/ready-set-redirect/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "ready-set-redirect:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ready-set-redirect/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/ready-set-redirect"],
+      "options": {
+        "jestConfig": "apps/ready-set-redirect/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
