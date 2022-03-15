@@ -1,6 +1,6 @@
 {
-  "root": "apps/ready-set-redirect",
-  "sourceRoot": "apps/ready-set-redirect/src",
+  "root": "apps/webapp",
+  "sourceRoot": "apps/webapp/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,17 +9,14 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
-        "outputPath": "dist/apps/ready-set-redirect",
-        "index": "apps/ready-set-redirect/src/index.html",
+        "outputPath": "dist/apps/webapp",
+        "index": "apps/webapp/src/index.html",
         "baseHref": "/",
-        "main": "apps/ready-set-redirect/src/main.tsx",
-        "polyfills": "apps/ready-set-redirect/src/polyfills.ts",
-        "tsConfig": "apps/ready-set-redirect/tsconfig.app.json",
-        "assets": [
-          "apps/ready-set-redirect/src/favicon.ico",
-          "apps/ready-set-redirect/src/assets"
-        ],
-        "styles": ["apps/ready-set-redirect/src/styles.scss"],
+        "main": "apps/webapp/src/main.tsx",
+        "polyfills": "apps/webapp/src/polyfills.ts",
+        "tsConfig": "apps/webapp/tsconfig.app.json",
+        "assets": ["apps/webapp/src/favicon.ico", "apps/webapp/src/assets"],
+        "styles": ["apps/webapp/src/styles.scss"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },
@@ -27,8 +24,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/ready-set-redirect/src/environments/environment.ts",
-              "with": "apps/ready-set-redirect/src/environments/environment.prod.ts"
+              "replace": "apps/webapp/src/environments/environment.ts",
+              "with": "apps/webapp/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -43,13 +40,13 @@
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
-        "buildTarget": "ready-set-redirect:build",
+        "buildTarget": "webapp:build",
         "hmr": true,
-        "proxyConfig": "apps/ready-set-redirect/proxy.conf.json"
+        "proxyConfig": "apps/webapp/proxy.conf.json"
       },
       "configurations": {
         "production": {
-          "buildTarget": "ready-set-redirect:build:production",
+          "buildTarget": "webapp:build:production",
           "hmr": false
         }
       }
@@ -58,14 +55,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/ready-set-redirect/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/webapp/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/ready-set-redirect"],
+      "outputs": ["coverage/apps/webapp"],
       "options": {
-        "jestConfig": "apps/ready-set-redirect/jest.config.js",
+        "jestConfig": "apps/webapp/jest.config.js",
         "passWithNoTests": true
       }
     }
