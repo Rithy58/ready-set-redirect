@@ -3,7 +3,6 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
-    "ready-set-redirect-e2e": "apps/ready-set-redirect-e2e",
     "webapp": "apps/webapp"
   }
 }
