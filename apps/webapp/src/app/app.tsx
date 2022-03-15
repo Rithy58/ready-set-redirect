@@ -1,27 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Message } from '@ready-set-redirect/api-interfaces';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Home } from '../home'
+import { Link } from '../link'
 
 export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
-
-  useEffect(() => {
-    fetch('/api')
-      .then((r) => r.json())
-      .then(setMessage);
-  }, []);
-
   return (
-    <>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to ready-set-redirect!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-          alt="Nx - Smart, Fast and Extensible Build System"
-        />
-      </div>
-      <div>{m.message}</div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path='/link/:id' element={<Link />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
