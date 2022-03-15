@@ -35,8 +35,8 @@ export const Link = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Link for { id }</h1>
-      <h3>{ timer }</h3>
+      <h3>Redirecting to { url } in</h3>
+      <h1>{ timer }</h1>
     </div>
   )
 }
