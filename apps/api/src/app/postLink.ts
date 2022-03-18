@@ -2,7 +2,11 @@ import { LinkData } from '@ready-set-redirect/api-interfaces'
 import { Request, Response } from 'express'
 import { Client } from 'pg'
 
-export const postLink = (client: Client) => (req: Request, res: Response) => {
+interface postLinkRequest extends Request {
+  body: LinkData
+}
+
+export const postLink = (client: Client) => (req: postLinkRequest, res: Response) => {
   const query = `
     INSERT INTO data (url, timer)
     VALUES ($1, $2)
