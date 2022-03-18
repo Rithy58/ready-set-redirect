@@ -1,4 +1,4 @@
 export interface LinkData {
-  url: string,
+  url: string
   timer: number
 }

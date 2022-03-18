@@ -1,16 +1,16 @@
 {
-    "name": "ready-set-redirect",
-    "scripts": {},
-    "env": {},
-    "formation": {},
-    "addons": ["heroku-postgresql:hobby-dev"],
-    "buildpacks": [
-        {
-            "url": "heroku/nodejs"
-        },
-        {
-            "url": "heroku-community/nginx"
-        }
-    ],
-    "stack": "heroku-20"
-  }
+  "name": "ready-set-redirect",
+  "scripts": {},
+  "env": {},
+  "formation": {},
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku-community/nginx"
+    }
+  ],
+  "stack": "heroku-20"
+}
