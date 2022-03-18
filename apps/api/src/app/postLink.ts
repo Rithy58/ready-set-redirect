@@ -14,6 +14,9 @@ export const postLink = (client: Client) => (req: postLinkRequest, res: Response
   `
   const values = [req.body.url, req.body.timer]
   client.query(query, values, (err, data) => {
+    if(err) {
+      console.error(err)
+    }
     res.json(data.rows[0].id)
   })
 }
