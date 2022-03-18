@@ -1,6 +1,5 @@
 import * as express from 'express';
 import * as fs from 'fs';
-import { Message } from '@ready-set-redirect/api-interfaces';
 import { Client } from 'pg';
 import { postLink } from './app/postLink';
 import { getLink } from './app/getLink';
@@ -8,7 +7,12 @@ import { getLink } from './app/getLink';
 const app = express();
 app.use(express.json())
 
-const client = new Client();
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 client.connect();
 
 app.post('/api/post', postLink(client))
