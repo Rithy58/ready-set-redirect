@@ -12,8 +12,20 @@ const client = new Client({
   ssl: {
     rejectUnauthorized: false
   }
-});
-client.connect();
+})
+client.connect(() => {
+  client.query(`CREATE TABLE IF NOT EXISTS data (
+    id BIGSERIAL,
+    url TEXT,
+    timer INTEGER,
+    created_at TIMESTAMP DEFAULT NOW()
+    );`, (err) => {
+      if(err) {
+        console.error(err)
+      }
+    }
+  )
+})
 
 app.post('/api/post', postLink(client))
 app.get('/api/get/:id', getLink(client))
