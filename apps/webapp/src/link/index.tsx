@@ -1,41 +1,46 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { LinkData } from '@ready-set-redirect/api-interfaces'
 
 export const Link = () => {
   const [loaded, setLoaded] = React.useState<boolean>(false)
-  const [url, setUrl] = React.useState<string>('')
-  const [timer, setTimer] = React.useState<number>()
-
+  const [linkData, setLinkData] = React.useState<LinkData>()
   const { id } = useParams()
 
   const countDown = React.useCallback(() => {
-    if (timer && timer > 0) {
-      setTimer(timer - 1)
-    } else {
-      window.location.href = url
+    if (linkData) {
+      if(linkData.timer > 0) {
+        setLinkData({...linkData, timer: linkData.timer - 1})
+      } else {
+        window.location.href = linkData.url
+      }
     }
-  }, [timer, setTimer, url])
+  }, [linkData, setLinkData])
 
   React.useEffect(() => {
     fetch(`/api/get/${id}`)
-      .then((r) => r.json())
+      .then<LinkData>((r) => r.json())
       .then((data) => {
-        setUrl(data.url)
-        setTimer(data.timer)
+        setLinkData(data)
         setLoaded(true)
       })
   }, [])
 
   React.useEffect(() => {
-    if (loaded) {
+    if(loaded) {
       setTimeout(countDown, 1000)
     }
-  }, [loaded, timer])
+  }, [loaded, linkData])
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h3>Redirecting to {url} in</h3>
-      <h1>{timer}</h1>
+      { loaded && linkData ?
+        <>
+          <h3>Redirecting to {linkData.url} in</h3>
+          <h1>{linkData.timer}</h1>
+        </> :
+        <h3>Loading...</h3>
+      }
     </div>
   )
 }
