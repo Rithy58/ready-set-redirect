@@ -8,25 +8,10 @@ import { getLink } from './app/getLink';
 const app = express();
 app.use(express.json())
 
-const credentials = {
-  user: 'qyofjenh',
-  host: 'kashin.db.elephantsql.com',
-  database: 'qyofjenh',
-  password: '6jOngQrbqqmISaCm3vmpKNRrbPWky3LS',
-  port: 5432,
-};
-
-const client = new Client(credentials);
+const client = new Client();
 client.connect();
 
-const greeting: Message = { message: 'Welcome to api!' };
-
-app.get('/api', (req, res) => {
-  res.send(greeting);
-});
-
 app.post('/api/post', postLink(client))
-
 app.get('/api/get/:id', getLink(client))
 
 const port = process.env.port || 3333;
