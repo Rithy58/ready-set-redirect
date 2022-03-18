@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@ready-set-redirect/api-interfaces';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Home } from '../home'
 import { Link } from '../link'
 
@@ -9,10 +7,10 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path='/link/:id' element={<Link />} />
+        <Route path="/link/:id" element={<Link />} />
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App
