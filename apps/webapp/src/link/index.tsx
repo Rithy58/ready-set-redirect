@@ -1,4 +1,3 @@
-import { Message } from '@ready-set-redirect/api-interfaces';
 import React from 'react'
 import { useParams } from 'react-router-dom';
 

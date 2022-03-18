@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Message } from '@ready-set-redirect/api-interfaces';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Home } from '../home'
 import { Link } from '../link'
